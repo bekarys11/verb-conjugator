@@ -1,13 +1,114 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600&display=swap");
+html,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Raleway", sans-serif;
+  background: #e9eaec;
+  color: #333652;
 }
+
+h1 {
+  padding: 0.4rem 0;
+  padding-top: 1rem;
+  margin: 0 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px #fad02c;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  display: flex;
+  margin: 0 2rem;
+  font-family: inherit;
+}
+.search-container input {
+  color: #333652;
+  font-size: 1rem;
+  min-width: 30%;
+  padding: 0.4rem;
+  border: 2px solid #333652;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+}
+.search-container input:focus, .search-container input:active {
+  outline: none;
+}
+.search-container button {
+  color: #333652;
+  padding: 0.2rem;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  border: 2px solid #333652;
+  border-radius: 3px;
+}
+.search-container button:focus, .search-container button:active {
+  outline: none;
+}
+
+.components {
+  margin: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.form-container {
+  background: #fff;
+  margin-bottom: 0.5rem;
+  border: 3px #fad02c;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.form-container h3 {
+  padding: 0.2rem 0;
+  text-align: center;
+  background: #fad02c;
+}
+.form-container ul {
+  padding: 0.6rem 0;
+}
+.form-container ul li {
+  padding-left: 2rem;
+  font-size: 1.2rem;
+  list-style-type: none;
+  font-weight: bold;
+}
+.form-container ul li span {
+  color: #fad02c;
+}
+
+@media (max-width: 1110px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-container h3 {
+    font-size: 1em;
+  }
+  .form-container ul > li {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 800px) {
+  .components {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  .components {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

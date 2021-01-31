@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600&display=swap");
+
+$main-marg: 0 2rem;
+$primary-col: #333652;
+$secondary-col: #fad02c;
+
+html,
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: "Raleway", sans-serif;
+	background: #e9eaec;
+	color: $primary-col;
+}
+
+h1 {
+	padding: 0.4rem 0;
+	padding-top: 1rem;
+	margin: $main-marg;
+	margin-bottom: 2rem;
+	border-bottom: 2px $secondary-col;
+}
+
+.header {
+	margin-bottom: 2rem;
+}
+
+.search-container {
+	display: flex;
+	margin: $main-marg;
+	font-family: inherit;
+
+	input {
+		color: $primary-col;
+		font-size: 1rem;
+		min-width: 30%;
+		padding: 0.4rem;
+		border: 2px solid $primary-col;
+		border-radius: 5px;
+		margin-right: 0.5rem;
+		&:focus,
+		&:active {
+			outline: none;
+		}
+	}
+
+	button {
+		color: $primary-col;
+		padding: 0.2rem;
+		font-size: 1rem;
+		font-family: inherit;
+		font-weight: bold;
+		border: 2px solid $primary-col;
+		border-radius: 3px;
+
+		&:focus,
+		&:active {
+			outline: none;
+		}
+	}
+}
+
+.components {
+	margin: $main-marg;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+.form-container {
+	background: #fff;
+	margin-bottom: 0.5rem;
+	border: 3px $secondary-col;
+	border-radius: 5px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+	h3 {
+		padding: 0.2rem 0;
+		text-align: center;
+		background: $secondary-col;
+	}
+
+	ul {
+		padding: 0.6rem 0;
+
+		li {
+			padding-left: 2rem;
+			font-size: 1.2rem;
+			list-style-type: none;
+			font-weight: bold;
+
+			span {
+				color: $secondary-col;
+			}
+		}
+	}
+}
+
+@media (max-width: 1110px) {
+	h1 {
+		font-size: 1.5rem;
+	}
+	.form-container {
+		h3 {
+			font-size: 1em;
+		}
+
+		ul > li {
+			font-size: 0.9rem;
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.components {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 580px) {
+	.components {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
