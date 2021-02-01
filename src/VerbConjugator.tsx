@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FormComp from "./FormComp";
-import "./index.css";
+import "./styles/index.css";
 
 const jsLingua = require("jslingua");
 const engMorpho = jsLingua.nserv("morpho", "eng");
@@ -40,7 +40,17 @@ const Main = () => {
 	//Future Perfect Continuous
 	const [futurePerfCont, setFuturePerfCont] = useState("");
 
+	function checkEnter(e: React.KeyboardEvent<HTMLDivElement>) {
+		if (e.key === "Enter") {
+			return conjugateVerb(verb);
+		} else {
+			return null;
+		}
+	}
+
 	function conjugateVerb(verb: string): void {
+		const lowerCasedVerb = verb.toLowerCase();
+
 		//Choose needed options for verbs
 		let opts = {
 			tense: "present",
@@ -51,88 +61,89 @@ const Main = () => {
 		};
 
 		//Present Simple
-		let presSimpFirstPerson: string = engMorpho.conj(verb, opts);
+		let presSimpFirstPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFirstPersonPresSimp(presSimpFirstPerson);
 		opts.person = "third";
-		let presSimpThirdPerson: string = engMorpho.conj(verb, opts);
+		let presSimpThirdPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setThirdPersonPresSimp(presSimpThirdPerson);
 
 		//Past Simple
 		opts.tense = "past";
-		let pastSimp: string = engMorpho.conj(verb, opts);
+		let pastSimp: string = engMorpho.conj(lowerCasedVerb, opts);
 		setPastSimp(pastSimp);
 
 		//Future Simple
 		opts.tense = "future";
-		let futureSimp: string = engMorpho.conj(verb, opts);
+		let futureSimp: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFutureSimp(futureSimp);
 
 		//Present Continuous
 		opts.person = "first";
 		opts.tense = "present";
 		opts.aspect = "continuous";
-		let presContFirstPerson: string = engMorpho.conj(verb, opts);
+		let presContFirstPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFirstPersonPresCont(presContFirstPerson);
 		opts.person = "second";
-		let presContSecondPerson: string = engMorpho.conj(verb, opts);
+		let presContSecondPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setSecondPersonPresCont(presContSecondPerson);
 		opts.person = "third";
-		let presContThirdPerson: string = engMorpho.conj(verb, opts);
+		let presContThirdPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setThirdPersonPresCont(presContThirdPerson);
 
 		//Past Continuous
 		opts.person = "first";
 		opts.tense = "past";
-		let pastContFirstPerson: string = engMorpho.conj(verb, opts);
+		let pastContFirstPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFirstPersonPastCont(pastContFirstPerson);
 		opts.person = "second";
-		let pastContSecondPerson: string = engMorpho.conj(verb, opts);
+		let pastContSecondPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setSecondPersonPastCont(pastContSecondPerson);
 
 		//Future Continuous
 		opts.tense = "future";
-		let futureCont: string = engMorpho.conj(verb, opts);
+		let futureCont: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFutCont(futureCont);
 
 		//Present Perfect
 		opts.tense = "present";
 		opts.person = "first";
 		opts.aspect = "perfect";
-		let presPerfectFirstPerson: string = engMorpho.conj(verb, opts);
+		let presPerfectFirstPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFirstPersonPresPerfect(presPerfectFirstPerson);
 		opts.person = "third";
-		let presPerfectThirdPerson: string = engMorpho.conj(verb, opts);
+		let presPerfectThirdPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setThirdPersonPresPerfect(presPerfectThirdPerson);
 
 		//Past Perfect
 		opts.tense = "past";
-		let pastPerfect: string = engMorpho.conj(verb, opts);
+		let pastPerfect: string = engMorpho.conj(lowerCasedVerb, opts);
 		setPastPerfect(pastPerfect);
 
 		//Future Perfect
 		opts.tense = "future";
-		let futurePerfect: string = engMorpho.conj(verb, opts);
+		let futurePerfect: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFuturePerfect(futurePerfect);
 
 		//Present Perfect Continuous
 		opts.tense = "present";
 		opts.person = "first";
 		opts.aspect = "perfect-continuous";
-		let presPerfContFirstPerson: string = engMorpho.conj(verb, opts);
+		let presPerfContFirstPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFirstPersonPresPerfCont(presPerfContFirstPerson);
 		opts.person = "third";
-		let presPerfContThirdPerson: string = engMorpho.conj(verb, opts);
+		let presPerfContThirdPerson: string = engMorpho.conj(lowerCasedVerb, opts);
 		setThirdPersonPresPerfCont(presPerfContThirdPerson);
 
 		//Past Perfect Continuous
 		opts.tense = "past";
-		let pastPerfCont: string = engMorpho.conj(verb, opts);
+		let pastPerfCont: string = engMorpho.conj(lowerCasedVerb, opts);
 		setPastPerfCont(pastPerfCont);
 
 		//Future Perfect
 		opts.tense = "future";
-		let futurePerfCont: string = engMorpho.conj(verb, opts);
+		let futurePerfCont: string = engMorpho.conj(lowerCasedVerb, opts);
 		setFuturePerfCont(futurePerfCont);
+
 		setIsClicked(true);
 	}
 
@@ -145,6 +156,7 @@ const Main = () => {
 						type="text"
 						onChange={(e) => setVerb(e.target.value)}
 						placeholder="Enter a verb"
+						onKeyPress={(e) => checkEnter(e)}
 					/>
 					<button onClick={() => conjugateVerb(verb)}>Search</button>
 				</div>
@@ -261,7 +273,9 @@ const Main = () => {
 						thirdPlural={futurePerfCont}
 					/>
 				</div>
-			) : null}
+			) : (
+				<div className="bg"></div>
+			)}
 		</>
 	);
 };
