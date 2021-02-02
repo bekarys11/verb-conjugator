@@ -6,7 +6,7 @@
 
 ## General info
 
-This project's for verb conjugation.
+This project's for verb conjugation. It's live on: https://engconjugator.netlify.app I
 
 ## Technologies
 
